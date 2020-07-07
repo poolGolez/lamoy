@@ -23,6 +23,10 @@ class CategoriesScreen extends StatelessWidget {
           mainAxisSpacing: 20,
         ),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   child: Icon(Icons.add),
+      // ),
     );
   }
 }

@@ -9,8 +9,17 @@ class LamoyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
+          primarySwatch: Colors.red,
+          accentColor: Colors.amberAccent,
+          // canvasColor: Colors.lightGreen[100]
+          fontFamily: 'Raleway',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'RobotoCondensed',
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
       home: CategoriesScreen(),
     );
   }
