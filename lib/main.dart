@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lamoy/widget/category_meals_screen.dart';
 
-import './widget/categories_screen.dart';
+import './screen/categories_screen.dart';
+import './screen/category_meals_screen.dart';
 
 void main() => runApp(LamoyApp());
 

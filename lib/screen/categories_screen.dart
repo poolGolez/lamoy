@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './category_item.dart';
+import '../widget/category_item.dart';
 import '../domain/category.dart';
 import '../domain/dummy_data.dart';
 
