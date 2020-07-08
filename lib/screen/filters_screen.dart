@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:lamoy/screen/home_screen.dart';
 import 'package:lamoy/screen/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const ROUTE_NAME = '/filters';
+
+  final Map<String, bool> filters;
+  final Function saveFilters;
+
+  const FiltersScreen(this.filters, this.saveFilters);
 
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
@@ -11,21 +17,16 @@ class FiltersScreen extends StatefulWidget {
 class _FiltersScreenState extends State<FiltersScreen> {
   var _glutenFree = false;
   var _lactoseFree = false;
-  var _vegan = false;
   var _vegetarian = false;
+  var _vegan = false;
 
-  Widget _settingSwitch({
-    String title,
-    String description,
-    bool value,
-    Function handler,
-  }) {
-    return SwitchListTile(
-      title: Text(title, style: Theme.of(context).textTheme.headline6),
-      subtitle: Text(description),
-      value: value,
-      onChanged: handler,
-    );
+  @override
+  void initState() {
+    _glutenFree = widget.filters['glutenFree'];
+    _lactoseFree = widget.filters['lactoseFree'];
+    _vegetarian = widget.filters['vegetarian'];
+    _vegan = widget.filters['vegan'];
+    super.initState();
   }
 
   @override
@@ -82,12 +83,47 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       _vegan = newValue;
                     }),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: RaisedButton(
+                      color: Theme.of(context).primaryColor,
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        'Save Filters',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                      onPressed: () {
+                        widget.saveFilters(
+                          glutenFree: _glutenFree,
+                          lactoseFree: _lactoseFree,
+                          vegetarian: _vegetarian,
+                          vegan: _vegan,
+                        );
+                        Navigator.of(context)
+                            .pushReplacementNamed(HomeScreen.ROUTE_NAME);
+                      },
+                    ),
+                  ),
                 ],
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _settingSwitch({
+    String title,
+    String description,
+    bool value,
+    Function handler,
+  }) {
+    return SwitchListTile(
+      title: Text(title, style: Theme.of(context).textTheme.headline6),
+      subtitle: Text(description),
+      value: value,
+      onChanged: handler,
     );
   }
 }
