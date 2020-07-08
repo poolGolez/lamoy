@@ -42,10 +42,10 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           _drawerItem('Meals', Icons.restaurant, () {
-            Navigator.of(context).pushNamed(HomeScreen.ROUTE_NAME);
+            Navigator.of(context).pushReplacementNamed(HomeScreen.ROUTE_NAME);
           }),
           _drawerItem('Filters', Icons.settings, () {
-            Navigator.of(context).pushNamed(FiltersScreen.ROUTE_NAME);
+            Navigator.of(context).pushReplacementNamed(FiltersScreen.ROUTE_NAME);
           }),
         ],
       ),
