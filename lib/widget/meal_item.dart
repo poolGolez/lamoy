@@ -32,6 +32,10 @@ class MealItem extends StatelessWidget {
     }
   }
 
+  void navigateToDetailsScreen(context) {
+    Navigator.of(context).pushNamed('/meals', arguments: meal);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -40,37 +44,41 @@ class MealItem extends StatelessWidget {
       margin: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-                child: Image.network(
-                  meal.imageUrl,
-                  height: 250,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                bottom: 20,
-                right: 0,
-                child: Container(
-                  width: 200,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  color: Colors.black.withOpacity(0.60),
-                  child: Text(
-                    meal.title,
-                    style: TextStyle(fontSize: 26, color: Colors.orangeAccent),
-                    softWrap: true,
-                    overflow: TextOverflow.clip,
+          InkWell(
+            onTap: () => navigateToDetailsScreen(context),
+            child: Stack(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
+                  child: Image.network(
+                    meal.imageUrl,
+                    height: 250,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
                 ),
-              ),
-            ],
+                Positioned(
+                  bottom: 20,
+                  right: 0,
+                  child: Container(
+                    width: 200,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    color: Colors.black.withOpacity(0.60),
+                    child: Text(
+                      meal.title,
+                      style:
+                          TextStyle(fontSize: 26, color: Colors.orangeAccent),
+                      softWrap: true,
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),

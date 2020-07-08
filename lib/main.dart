@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lamoy/screen/meal_details_screen.dart';
 
 import './screen/categories_screen.dart';
 import './screen/category_meals_screen.dart';
@@ -24,6 +25,7 @@ class LamoyApp extends StatelessWidget {
       home: CategoriesScreen(),
       routes: {
         '/category-meals': (ctx) => CategoryMealsScreen(),
+        '/meals': (ctx) => MealDetailsScreen(),
       },
     );
   }
