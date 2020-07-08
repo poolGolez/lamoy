@@ -3,6 +3,7 @@ import 'package:lamoy/screen/meal_details_screen.dart';
 
 import './screen/home_screen.dart';
 import './screen/category_meals_screen.dart';
+import './screen/filters_screen.dart';
 
 void main() => runApp(LamoyApp());
 
@@ -26,6 +27,7 @@ class LamoyApp extends StatelessWidget {
       routes: {
         '/category-meals': (ctx) => CategoryMealsScreen(),
         '/meals': (ctx) => MealDetailsScreen(),
+        FiltersScreen.ROUTE_NAME: (ctx) => FiltersScreen(),
       },
     );
   }

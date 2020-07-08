@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:lamoy/screen/categories_screen.dart';
-import 'package:lamoy/screen/favorites_screen.dart';
+
+import './categories_screen.dart';
+import './favorites_screen.dart';
+import './main_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
+
+  static const ROUTE_NAME = '/';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -23,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Lamoy ta bai'),
       ),
       body: selectedScreen,
+      drawer: MainDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedScreenIndex,
         onTap: (index) => setState(() => _selectedScreenIndex = index),
