@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../domain/category.dart';
 import '../domain/dummy_data.dart';
+import '../widget/meal_item.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   @override
@@ -13,10 +14,10 @@ class CategoryMealsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(category.title)),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: meals.map((meal) {
-            return Text(meal.title);
+            return MealItem(meal: meal);
           }).toList(),
         ),
       ),
