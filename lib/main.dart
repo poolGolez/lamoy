@@ -22,10 +22,22 @@ class _LamoyAppState extends State<LamoyApp> {
     'vegan': false,
   };
 
-  final _favoriteMeals = [...DUMMY_MEALS.sublist(3, 9)];
+  final _favoriteMeals = <Meal>[];
 
   bool isFavorite(Meal meal) {
     return _favoriteMeals.any((element) => element.id == meal.id);
+  }
+
+  void toggleFavorite(Meal meal) {
+    setState(() {
+      var index = _favoriteMeals.indexWhere((element) => element.id == meal.id);
+
+      if (index >= 0) {
+        _favoriteMeals.removeAt(index);
+      } else {
+        _favoriteMeals.add(meal);
+      }
+    });
   }
 
   @override
@@ -45,7 +57,8 @@ class _LamoyAppState extends State<LamoyApp> {
       home: HomeScreen(_favoriteMeals),
       routes: {
         CategoryMealsScreen.ROUTE_NAME: (ctx) => CategoryMealsScreen(_filters),
-        MealDetailsScreen.ROUTE_NAME: (ctx) => MealDetailsScreen(isFavorite),
+        MealDetailsScreen.ROUTE_NAME: (ctx) =>
+            MealDetailsScreen(isFavorite, toggleFavorite),
         FiltersScreen.ROUTE_NAME: (ctx) => FiltersScreen(_filters, saveFilters),
       },
     );

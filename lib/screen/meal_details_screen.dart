@@ -4,9 +4,11 @@ import '../domain/meal.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   static const ROUTE_NAME = '/meals';
-  Function _isFavorite;
 
-  MealDetailsScreen(this._isFavorite);
+  Function _isFavorite;
+  Function _toggleFavorite;
+
+  MealDetailsScreen(this._isFavorite, Function this._toggleFavorite);
 
   Widget _buildSectionTitle(context, title) {
     return Padding(
@@ -100,7 +102,7 @@ class MealDetailsScreen extends StatelessWidget {
           size: 32,
           color: Theme.of(context).primaryColor,
         ),
-        onPressed: () { 'TODO'; },
+        onPressed: () => _toggleFavorite(meal),
       ),
     );
   }
