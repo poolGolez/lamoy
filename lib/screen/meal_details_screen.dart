@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../domain/meal.dart';
 
 class MealDetailsScreen extends StatelessWidget {
+  static const ROUTE_NAME = '/meals';
+
   Widget _buildSectionTitle(context, title) {
     return Padding(
       padding: const EdgeInsets.all(8.0),

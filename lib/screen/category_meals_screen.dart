@@ -5,6 +5,8 @@ import '../domain/dummy_data.dart';
 import '../widget/meal_item.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
+  static const ROUTE_NAME = '/category-meals';
+
   @override
   Widget build(BuildContext context) {
     final Category category = ModalRoute.of(context).settings.arguments;

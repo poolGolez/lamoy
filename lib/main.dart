@@ -36,8 +36,8 @@ class _LamoyAppState extends State<LamoyApp> {
               )),
       home: HomeScreen(),
       routes: {
-        '/category-meals': (ctx) => CategoryMealsScreen(),
-        '/meals': (ctx) => MealDetailsScreen(),
+        CategoryMealsScreen.ROUTE_NAME: (ctx) => CategoryMealsScreen(),
+        MealDetailsScreen.ROUTE_NAME: (ctx) => MealDetailsScreen(),
         FiltersScreen.ROUTE_NAME: (ctx) => FiltersScreen(_filters, saveFilters),
       },
     );
