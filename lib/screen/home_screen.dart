@@ -3,21 +3,33 @@ import 'package:flutter/material.dart';
 import './categories_screen.dart';
 import './favorites_screen.dart';
 import './main_drawer.dart';
+import '../domain/meal.dart';
 
 class HomeScreen extends StatefulWidget {
-
   static const ROUTE_NAME = '/';
+
+  final List<Meal> favoriteMeals;
+
+  HomeScreen(this.favoriteMeals);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedScreenIndex = 0;
-  List _screens = [
-    CategoriesScreen(),
-    FavoritesScreen(),
-  ];
+  int _selectedScreenIndex;
+  List<Widget> _screens;
+
+  @override
+  void initState() {
+    _selectedScreenIndex = 0;
+    _screens = <Widget>[
+      CategoriesScreen(),
+      FavoritesScreen(widget.favoriteMeals),
+    ];
+
+    super.initState();
+  }
 
   Widget get selectedScreen => _screens[_selectedScreenIndex];
 

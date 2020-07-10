@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lamoy/domain/dummy_data.dart';
 import 'package:lamoy/screen/meal_details_screen.dart';
 
 import './screen/home_screen.dart';
@@ -20,6 +21,8 @@ class _LamoyAppState extends State<LamoyApp> {
     'vegan': false,
   };
 
+  final _favoriteMeals = [...DUMMY_MEALS.sublist(3, 9)];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,7 +37,7 @@ class _LamoyAppState extends State<LamoyApp> {
                   fontWeight: FontWeight.bold,
                 ),
               )),
-      home: HomeScreen(),
+      home: HomeScreen(_favoriteMeals),
       routes: {
         CategoryMealsScreen.ROUTE_NAME: (ctx) => CategoryMealsScreen(_filters),
         MealDetailsScreen.ROUTE_NAME: (ctx) => MealDetailsScreen(),
