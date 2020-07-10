@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lamoy/domain/dummy_data.dart';
-import 'package:lamoy/screen/meal_details_screen.dart';
 
-import './screen/home_screen.dart';
+import './domain/dummy_data.dart';
 import './screen/category_meals_screen.dart';
 import './screen/filters_screen.dart';
+import './screen/home_screen.dart';
+import './screen/meal_details_screen.dart';
+import 'domain/meal.dart';
 
 void main() => runApp(LamoyApp());
 
@@ -23,6 +24,10 @@ class _LamoyAppState extends State<LamoyApp> {
 
   final _favoriteMeals = [...DUMMY_MEALS.sublist(3, 9)];
 
+  bool isFavorite(Meal meal) {
+    return _favoriteMeals.any((element) => element.id == meal.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,7 +45,7 @@ class _LamoyAppState extends State<LamoyApp> {
       home: HomeScreen(_favoriteMeals),
       routes: {
         CategoryMealsScreen.ROUTE_NAME: (ctx) => CategoryMealsScreen(_filters),
-        MealDetailsScreen.ROUTE_NAME: (ctx) => MealDetailsScreen(),
+        MealDetailsScreen.ROUTE_NAME: (ctx) => MealDetailsScreen(isFavorite),
         FiltersScreen.ROUTE_NAME: (ctx) => FiltersScreen(_filters, saveFilters),
       },
     );

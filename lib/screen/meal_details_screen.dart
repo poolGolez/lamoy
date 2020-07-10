@@ -4,6 +4,9 @@ import '../domain/meal.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   static const ROUTE_NAME = '/meals';
+  Function _isFavorite;
+
+  MealDetailsScreen(this._isFavorite);
 
   Widget _buildSectionTitle(context, title) {
     return Padding(
@@ -93,7 +96,7 @@ class MealDetailsScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
-          Icons.star_border,
+          this._isFavorite(meal) ? Icons.star: Icons.star_border,
           size: 32,
           color: Theme.of(context).primaryColor,
         ),
