@@ -91,6 +91,14 @@ class MealDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.star_border,
+          size: 32,
+          color: Theme.of(context).primaryColor,
+        ),
+        onPressed: () { 'TODO'; },
+      ),
     );
   }
 }
